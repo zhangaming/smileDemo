@@ -15,7 +15,7 @@ router.get('/insertAllGoodsInfo',async(ctx)=>{
         saveCount++
         console.log('成功'+saveCount)
       }).catch(error =>{
-        conosle.log(error)
+        console.log(error)
       })
     })
   })

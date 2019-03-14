@@ -25,8 +25,6 @@ const goodsSchema = new Schema({
   UPDATE_TIME:String,
   IS_RECOMMEND:Number,
   PICTURE_COMPERSS_PATH:String
-},{
-  collections:'Goods'
 })
 
 mongoose.model('Goods',goodsSchema)
