@@ -14,3 +14,5 @@ fs.readFile('./data_json/goods.json','utf8',function(err,data){
     else console.log('写文件操作成功')
   })
 })
+
+//重写文件

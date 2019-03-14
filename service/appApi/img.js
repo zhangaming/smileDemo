@@ -26,13 +26,20 @@ router.get('/insertAllPeopleImg',async(ctx)=>{
 router.post('/getPeopleImg',async(ctx)=>{
   try{
     let imgtype = ctx.request.body.type //子类别ID
-    let page = ctx.request.body.page //当前页数
+    let page = parseInt(ctx.request.body.page) //当前页数
     let num =  parseInt(ctx.request.body.pageNum)//每页显示数量
     let start = parseInt((page-1)*num) //开始位置
     const PeopleImgs = mongoose.model('PeopleImg')
     let result = await PeopleImgs.find({type:imgtype},{id:1,img:1,_id:0})
     .skip(start).limit(num).exec()
-    ctx.body = {code:200,message:result}
+    ctx.body = {code:200,
+      data:{
+        count:57,
+        current:page,
+        pageSize:num,
+        rows:result
+      }
+    }
   }catch(error){
     console.log(error)
     ctx.body = {code:500,message:error}
