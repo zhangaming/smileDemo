@@ -30,11 +30,17 @@ router.post('/getPeopleImg',async(ctx)=>{
     let num =  parseInt(ctx.request.body.pageNum)//每页显示数量
     let start = parseInt((page-1)*num) //开始位置
     const PeopleImgs = mongoose.model('PeopleImg')
+    let sum = await PeopleImgs.count({type:imgtype},(err,count)=>{
+       if(err) {
+         return console.error(err)
+       }
+       return count;
+    })
     let result = await PeopleImgs.find({type:imgtype},{id:1,img:1,_id:0})
     .skip(start).limit(num).exec()
     ctx.body = {code:200,
       data:{
-        count:57,
+        count:sum,
         current:page,
         pageSize:num,
         rows:result

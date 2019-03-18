@@ -40,6 +40,7 @@ export default {
     preview(item) {
       this.navShow= false;
       const images = this.imageList.map(_ => _.img);
+      console.log('images',images)
       this.imagePreview = ImagePreview({
         images,
         startPosition: this.imageList.indexOf(item),
@@ -73,8 +74,8 @@ export default {
 }
 img {
     margin: .08rem;
-    width: 6.366667rem;
-    height: 6.366667rem;
+    width: 32vw;
+    height: 32vw;
     overflow: hidden;
     border-radius: .266667rem;
   }
