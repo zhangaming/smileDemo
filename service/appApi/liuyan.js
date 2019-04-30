@@ -40,6 +40,8 @@ router.post('/getMessage', async (ctx) => {
         message: 1,
         createTing: 1,
         _id: 0
+      }).sort({
+        _id: -1
       })
       .skip(start).limit(num).exec()
     ctx.body = {
