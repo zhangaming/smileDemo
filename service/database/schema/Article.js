@@ -1,15 +1,13 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+let ObjectId = Schema.Types.ObjectId
 
 //创建UserSchema
 const articleSchema = new Schema({
   id: {
     type: ObjectId
   },
-  title: {
-    unique: true,
-    type: String
-  },
+  title: String,
   type: String,
   content: String,
   html: String,

@@ -9,13 +9,19 @@ const bodyParser = require('koa-bodyparser')
 const cors = require('koa2-cors')
 const Router = require('koa-router')
 
-app.use(bodyParser())
+app.use(bodyParser({
+  formLimit: "3mb",
+  jsonLimit: "3mb",
+  textLimit: "3mb",
+  enableTypes: ['json', 'form', 'text']
+}))
 app.use(cors())
 
 let user = require('./appApi/user.js')
 let goods = require('./appApi/goods.js')
 let PeopleImgs = require('./appApi/img.js')
 let Liuyan = require('./appApi/liuyan.js')
+let Article = require('./appApi/article.js')
 
 //装载所有子路由
 let router = new Router()
@@ -23,6 +29,7 @@ router.use('/user', user.routes())
 router.use('/goods', goods.routes())
 router.use('/peopleImgs', PeopleImgs.routes())
 router.use('/liuyan', Liuyan.routes())
+router.use('/article', Article.routes())
 //加载路由中间件
 
 app.use(router.routes())
