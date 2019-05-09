@@ -19,7 +19,7 @@ app.use(cors())
 
 let user = require('./appApi/user.js')
 let goods = require('./appApi/goods.js')
-let PeopleImgs = require('./appApi/img.js')
+let Imgs = require('./appApi/img.js')
 let Liuyan = require('./appApi/liuyan.js')
 let Article = require('./appApi/article.js')
 
@@ -27,7 +27,7 @@ let Article = require('./appApi/article.js')
 let router = new Router()
 router.use('/user', user.routes())
 router.use('/goods', goods.routes())
-router.use('/peopleImgs', PeopleImgs.routes())
+router.use('/imgs', Imgs.routes())
 router.use('/liuyan', Liuyan.routes())
 router.use('/article', Article.routes())
 //加载路由中间件

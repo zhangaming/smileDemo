@@ -49,7 +49,7 @@ export default {
     },
     async onLoad() {
       let data =  qs.stringify({
-        type:1,
+        type:0,
         page:this.current + 1,
         pageNum:this.pageSize
       })

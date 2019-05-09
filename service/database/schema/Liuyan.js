@@ -8,10 +8,12 @@ const userSchema = new Schema({
     type: String
   },
   message: String,
-  createTing: {
+  createTime: {
     type: Date,
     default: Date.now()
   },
+  type: String,
+  time: String
 }, {
   collection: 'message'
 })

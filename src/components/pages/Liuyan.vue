@@ -46,6 +46,7 @@ import { Toast } from 'vant';
 import axios from 'axios'
 import qs from 'qs'
 import url from '@/serviceApiConfig.js'
+import dayjs from 'dayjs'
 
 export default {
   data () {
@@ -66,9 +67,12 @@ export default {
       }
       console.log('user', this.user)
       console.log("message", this.message)
+      let time = dayjs().format('YYYY-MM-DD HH:mm:ss')
       let data = qs.stringify({
         user: this.user,
         message: this.message,
+        type: 'test',
+        time: time
       })
       axios.post(url.submitMessage, data).then(res => {
         Toast(res.data.message, 1000);
