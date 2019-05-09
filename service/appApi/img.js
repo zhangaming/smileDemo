@@ -5,7 +5,7 @@ const fs = require('fs')
 let router = new Router()
 
 router.get('/insertAllPeopleImg', async (ctx) => {
-  fs.readFile('./data_json/people_img2.json', 'utf8', (err, data) => {
+  fs.readFile('./data_json/people_img.json', 'utf8', (err, data) => {
     data = JSON.parse(data)
     let saveCount = 0
     const PeopleImg = mongoose.model('Img')
