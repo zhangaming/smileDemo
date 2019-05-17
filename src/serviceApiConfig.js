@@ -9,9 +9,9 @@ const URL = {
   getCategoryList: LOCALURL + 'goods/getCategoryList', //得到大类信息
   getCategorySubList: LOCALURL + 'goods/getCategorySubList', //得到小类信息
   getGoodsListByCategorySubID: LOCALURL + 'goods/getGoodsListByCategorySubID', //得到小类商品信息
-  getPeopleImg: LOCALURL + 'imgs/getImg', //得到照片信息
-  submitMessage: LOCALURL + 'liuyan/submitMessage', //录入留言板
-  getMessage: LOCALURL + 'liuyan/getMessage', //获取留言板
+  getPeopleImg: LOCALURL + 'getImg', //得到照片信息
+  submitMessage: LOCALURL + 'submitMessage', //录入留言板
+  getMessage: LOCALURL + 'getMessage', //获取留言板
 }
 
 module.exports = URL

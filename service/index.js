@@ -22,14 +22,20 @@ let goods = require('./appApi/goods.js')
 let Imgs = require('./appApi/img.js')
 let Liuyan = require('./appApi/liuyan.js')
 let Article = require('./appApi/article.js')
+let Skill = require('./appApi/skill.js')
+let Ip = require('./appApi/ip.js')
+let weather = require('./appApi/weather.js')
 
 //装载所有子路由
 let router = new Router()
 router.use('/user', user.routes())
 router.use('/goods', goods.routes())
-router.use('/imgs', Imgs.routes())
-router.use('/liuyan', Liuyan.routes())
-router.use('/article', Article.routes())
+router.use('', Imgs.routes())
+router.use('', Liuyan.routes())
+router.use('', Article.routes())
+router.use('', Skill.routes())
+router.use('', Ip.routes())
+router.use('', weather.routes())
 //加载路由中间件
 
 app.use(router.routes())
