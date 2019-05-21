@@ -78,4 +78,50 @@ router.get('/ip', async (ctx) => {
   }
 })
 
+router.post('/ipList', async (ctx) => { //获取列表
+  try {
+    let cid = parseInt(ctx.request.body.cid) //城市id
+    let page = parseInt(ctx.request.body.page) //当前页数
+    let num = parseInt(ctx.request.body.pageNum) //每页显示数量
+    let start = parseInt((page - 1) * num) //开始位置
+    const IP = mongoose.model('IP')
+    let sum = await IP.countDocuments('', (err, count) => {
+      if (err) {
+        return console.error(err)
+      }
+      return count;
+    })
+
+    let obj = cid ? {
+      cid: cid
+    } : {}
+    let result = await IP.find(obj, {
+        count: 1,
+        ip: 1,
+        orNew: 1,
+        cid: 1,
+        cname: 1,
+        _id: 1,
+      }).sort({
+        _id: -1
+      })
+      .skip(start).limit(num).exec()
+    ctx.body = {
+      code: 200,
+      data: {
+        count: sum,
+        current: page,
+        pageSize: num,
+        rows: result
+      }
+    }
+  } catch (error) {
+    console.log(error)
+    ctx.body = {
+      code: 500,
+      message: error
+    }
+  }
+})
+
 module.exports = router

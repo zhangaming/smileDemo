@@ -65,13 +65,15 @@ export default {
         Toast('请输入昵称', 1000);
         return
       }
-      console.log('user', this.user)
-      console.log("message", this.message)
+      if (!this.message) {
+        Toast('留言', 1000);
+        return
+      }
       let time = dayjs().format('YYYY-MM-DD HH:mm:ss')
       let data = qs.stringify({
         user: this.user,
         message: this.message,
-        type: 'test',
+        type: '',
         time: time
       })
       axios.post(url.submitMessage, data).then(res => {
