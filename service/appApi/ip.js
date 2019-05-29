@@ -1,20 +1,12 @@
 const Router = require('koa-router')
 const mongoose = require('mongoose')
-const fs = require('fs')
-const axios = require('axios')
-
 let router = new Router()
 
-router.get('/ip', async (ctx) => {
-  let url = "http://pv.sohu.com/cityjson?ie=utf-8";
-  let returnCitySN = await axios.get(url).then(res => {
-    eval(res.data)
-    return returnCitySN
-  })
-  let ip = returnCitySN['cip']
+router.post('/ip', async (ctx) => {
+  let ip = ctx.request.body.cip
   // let ip = returnCitySN['cip']
-  let cid = returnCitySN['cid']
-  let cname = returnCitySN['cname']
+  let cid = ctx.request.body.cid
+  let cname = ctx.request.body.cityName
   const IP = mongoose.model('IP')
   let result = await IP.find({
     ip: ip
