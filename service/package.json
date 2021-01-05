@@ -10,7 +10,7 @@
   "author": "zhangaming <273970901@qq.com>",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bcrypt": "^2.0.1",
     "glob": "^7.1.4",
     "koa": "^2.6.2",
